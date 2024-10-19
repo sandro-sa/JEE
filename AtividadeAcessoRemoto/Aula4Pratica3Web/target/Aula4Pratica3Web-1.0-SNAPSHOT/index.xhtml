@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>UTFPR EJB</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+            h1 {
+                color: #007BFF;
+                margin-bottom: 20px;
+            }
+            form {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                display: inline-block;
+            }
+            input[type="text"] {
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 200px;
+            }
+            h:commandButton {
+                background-color: #007BFF;
+                color: greenyellow;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            h:commandButton:hover {
+                background-color: #0056b3;
+            }
+            h:outputText {
+                display: block;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+            label{
+                margin-right: 5px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h1>Desenvolvendo um EJB com acesso remoto para somar dois múmeros</h1>
+       
+        <h:form>  
+            <label for="valorA">Valor A: </label>
+            <h:inputText id="valorA" value="#{jsfCalculadora.valorA}"/> 
+            <br/>
+            <label for="valorB">Valor B: </label>
+            <h:inputText id="valorB" value="#{jsfCalculadora.valorB}"/> 
+            <br/>
+            <h:commandButton value="Somar" action="#{jsfCalculadora.somar()}"/>
+            <br/>
+            <br/>
+            <h:outputText value="#{jsfCalculadora.resultado}" />
+        </h:form>
+    </h:body>
+</html>
+

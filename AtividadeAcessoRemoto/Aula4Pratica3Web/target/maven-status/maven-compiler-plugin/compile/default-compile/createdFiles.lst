@@ -1,0 +1,4 @@
+br\resources\JavaEE8Resource.class
+br\ejb\EjbCalculadora.class
+br\JAXRSConfiguration.class
+br\jsf\JsfCalculadora.class
