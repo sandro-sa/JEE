@@ -1,6 +1,9 @@
 br\jsf\JsfProduto.class
+br\ejb\EjbConsProdAlternativo.class
 br\resources\JavaEE8Resource.class
+br\ejb\EjbConsProd.class
 br\model\Produto.class
 br\ejb\EjbProduto.class
+br\jsf\JsfProdutor.class
 br\JAXRSConfiguration.class
 br\model\CrudProduto.class
