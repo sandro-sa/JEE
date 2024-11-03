@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Jogo da Soma</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            h1 {
+                color: #4CAF50;
+                text-align: center;
+            }
+            h2 {
+                color: #555;
+                text-align: center;
+            }
+            h3 {
+                color: #4CAF50;
+                margin-top: 30px;
+            }
+            .message {
+                color: #D32F2F;
+                font-weight: bold;
+                text-align: center;
+                margin: 10px 0;
+            }
+            h:panelGrid {
+                margin: 20px auto;
+                max-width: 400px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            h:inputText {
+                width: calc(100% - 20px); 
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .input-container {
+                display: flex;
+                align-items: center; 
+                margin-top: 10px;
+            }
+            h:commandButton {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-left: 10px; 
+                width: 100px; 
+            }
+            h:commandButton:hover {
+                background-color: #45a049;
+            }
+            h:dataTable {
+                width: 100%;
+                margin-top: 20px;
+                border-collapse: collapse;
+            }
+            h:dataTable th, h:dataTable td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+            h:dataTable th {
+                background-color: #f2f2f2;
+                color: #333;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h1>Bem-Vindo, 
+            <h:outputText value="#{jsfJogo.nomeDoJogador == '' || jsfJogo.nomeDoJogador == null ? 'Jogador' : jsfJogo.nomeDoJogador}" />
+        </h1>
+        
+        <h2>Tarefa Message Driven Beans</h2>
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome:" />
+                <div class="input-container">
+                    <h:inputText value="#{jsfJogo.nomeDoJogador}" required="true"/>
+                    <h:commandButton value="OK" action="#{jsfJogo.setNomeDoJogador(jsfJogo.nomeDoJogador)}"/>
+                </div>
+            </h:panelGrid>
+        </h:form>
+
+        <h:form>
+            <h2>
+                #{jsfJogo.numero1} + #{jsfJogo.numero2} = ???
+            </h2>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Total da soma é:" />
+                <div class="input-container">
+                    <h:inputText value="#{jsfJogo.somaDoJogador}" required="true"/>
+                    <h:commandButton value="Verificar" action="#{jsfJogo.verificarSoma()}"/>
+                </div>
+            </h:panelGrid>
+        </h:form>
+
+        <h:outputText value="#{jsfJogo.mensagem}" styleClass="message" />
+
+        <h3>Placar</h3>
+        <h:panelGroup>
+            <h:dataTable value="#{jsfJogo.placar}" var="jogador">
+                <h:column>
+                    <f:facet name="header">Participante - </f:facet>
+                    <h:outputText value="#{jogador.key}"/> -
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Pontos</f:facet>
+                    <h:outputText value="#{jogador.value}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </h:body>
+</html>
